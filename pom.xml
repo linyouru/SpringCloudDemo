@@ -22,7 +22,12 @@
 
     <modules>
         <module>eureka-server</module>
-        <module>eureka-client</module>
+        <module>config-server</module>
+        <module>config-client</module>
+        <module>service-feign</module>
+        <module>service-gateway</module>
+        <module>service-zuul</module>
+        <module>service-resttemplate</module>
     </modules>
 
     <properties>
