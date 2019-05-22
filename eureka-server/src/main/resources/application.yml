@@ -8,14 +8,18 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
+#    hostname: localhost
+    hostname: 192.168.130.151
   client:
     registerWithEureka: false #表明自己是一个eureka server
     fetchRegistry: false      #表明自己是一个eureka server
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
-    enable-self-preservation: false  #关闭eureka server的自动保护模式
+    enable-self-preservation: false #关闭eureka server的自动保护模式
+logging:
+  file: C:\Users\LYR\Desktop\shared\eurekaerror.log
+
 
 
 #单机集群配置

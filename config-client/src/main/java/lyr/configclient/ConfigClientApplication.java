@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 @EnableEurekaClient
-@EnableDiscoveryClient
 @RefreshScope
 public class ConfigClientApplication {
 

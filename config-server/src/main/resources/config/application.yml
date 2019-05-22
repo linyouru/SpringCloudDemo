@@ -1,0 +1,60 @@
+
+server:
+  port: 8767
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        native:
+#          search-locations: classpath:/shared
+          search-locations: file:/C://Users/LYR/Desktop/shared    #配置文件所在路径
+  profiles:
+    active: native    #使用本地的配置文件
+  rabbitmq:           #配置rabbitMQ
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#        prefer-ip-address: true  # 使用ip地址注册到eureka server
+#        instance-id: ${spring.cloud.client.ipAddress}:${server.port} # 在eureka server中看到的status显示为具体的ip地址和port
+
+management:
+  endpoints:  #SpringCloud 2.0.0版本以后暴露接口方式
+    web:
+      exposure:
+        include: "*"
+
+
+
+
+#git上配置
+#spring:
+#  cloud:
+#      config:
+#        server:
+#          git:
+#            uri: https://github.com/linyouru/ConfigServer #Git地址
+#            searchPaths: shared  # git仓库地址下的相对地址，可以配置多个，用,分割
+#            username: linyouru
+#            password: linbin@1208
+#        label: master #Git分支
+
+
+#本地配置spring:
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          search-locations: classpath:/shared
+#  profiles:
+#    active: native
