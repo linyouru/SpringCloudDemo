@@ -23,7 +23,6 @@
     <modules>
         <module>eureka-server</module>
         <module>config-server</module>
-        <module>config-client</module>
         <module>service-feign</module>
         <module>service-gateway</module>
         <module>service-zuul</module>

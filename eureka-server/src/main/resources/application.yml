@@ -17,8 +17,8 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
     enable-self-preservation: false #关闭eureka server的自动保护模式
-logging:
-  file: C:\Users\LYR\Desktop\shared\eurekaerror.log
+#logging:
+#  file: C:\Users\LYR\Desktop\shared\eurekaerror.log
 
 
 

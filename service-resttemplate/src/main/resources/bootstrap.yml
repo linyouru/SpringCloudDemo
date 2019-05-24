@@ -1,0 +1,20 @@
+
+spring:
+  application:
+      name: service-resttemplate
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true # 通过服务发现的方式去找配置中心
+        serviceId: config-server  # 配置中心的名字，直接配置名称可以在配置中心集群的时候实现负载均衡
+  profiles:
+    active: dev # 对应配置中心文件的${profile}部分
+
+#server:
+#  port: 8762
+#
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
