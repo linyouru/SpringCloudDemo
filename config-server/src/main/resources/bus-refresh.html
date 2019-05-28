@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a id="a">更新配置</a>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    //采用POST方式调用服务
+    $.post('http://localhost:8767/actuator/bus-refresh','', function () {});
+</script>
+</html>
