@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
         <module name="eureka-server" />
+        <module name="security-oauth2" />
         <module name="service-feign" />
         <module name="service-gateway" />
         <module name="service-resttemplate" />
@@ -19,6 +20,7 @@
       <module name="config-server" target="1.8" />
       <module name="eureka-client" target="1.8" />
       <module name="eureka-server" target="1.8" />
+      <module name="security-oauth2" target="1.8" />
       <module name="service-feign" target="1.8" />
       <module name="service-gateway" target="1.8" />
       <module name="service-resttemplate" target="1.8" />

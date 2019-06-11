@@ -27,6 +27,7 @@
         <module>service-gateway</module>
         <module>service-zuul</module>
         <module>service-resttemplate</module>
+        <module>security-oauth2</module>
     </modules>
 
     <properties>

@@ -10,7 +10,7 @@ spring:
       server:
         native:
 #          search-locations: classpath:/shared
-          search-locations: file:/E:/IdeaProjects/SpringCloudDemoConfig #配置文件所在路径
+          search-locations: file:/E:/IdeaProjects/Config/SpringCloudDemoConfig #配置文件所在路径
   profiles:
     active: native    #使用本地的配置文件
   rabbitmq:           #配置rabbitMQ
