@@ -1,0 +1,36 @@
+
+
+spring:
+  application:
+      name: security-oauth2
+#  cloud:
+#    config:
+#      fail-fast: true #快速失败
+#      discovery:
+#        enabled: true # 通过服务发现的方式去找配置中心
+#        serviceId: config-server  # 配置中心的名字，直接配置名称可以在配置中心集群的时候实现负载均衡
+#  profiles:
+#    active: dev # 对应配置中心文件的${profile}部分
+## rabbitmq配置
+#  rabbitmq:
+#        host: localhost
+#        port: 5672
+#        username: guest
+#        password: guest
+  redis:
+      host: 127.0.0.1
+      database: 1
+
+server:
+  port: 8763
+
+#服务器发现注册配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/   #配置服务中心(可配置多个,用逗号隔开)
+
+
+
+
+

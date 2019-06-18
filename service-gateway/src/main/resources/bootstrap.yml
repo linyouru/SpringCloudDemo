@@ -17,7 +17,7 @@ spring:
 #          lowerCaseServiceId: true #服务名配置为小写
 #      routes:
 #      - id: service-hi
-#        uri: lb://EUREKA-CLIENT
+#        uri: lb://SERVICE-RESTTEMPLATE
 #        predicates:
 #          - Path=/demo/**
 #        filters:
