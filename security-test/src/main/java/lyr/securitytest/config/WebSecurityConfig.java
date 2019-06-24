@@ -1,5 +1,6 @@
 package lyr.securitytest.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -24,6 +25,12 @@ import javax.annotation.Resource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource
+    private MyAuthenctiationFailureHandler myAuthenctiationFailureHandler;
+
+    @Resource
+    private MyAuthenctiationSuccessHandler myAuthenctiationSuccessHandler;
+
+    @Resource
     private UserDetailsService userDetailsService;
 
     @Bean
@@ -43,6 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()                                // 定义当需要用户登录时候，转到的登录页面。
                 .loginPage("/authentication/require")       // 设置登录页面
                 .loginProcessingUrl("/login.do")          // 自定义的登录接口
+//                .successHandler(myAuthenctiationSuccessHandler)     //登陆成功处理
+//                .failureHandler(myAuthenctiationFailureHandler)     //登陆失败处理
                 .defaultSuccessUrl("/index.html")       // 登录成功之后，默认跳转的页面
                 .permitAll()
                 .and().authorizeRequests()                  // 定义哪些URL需要被保护、哪些不需要被保护
