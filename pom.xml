@@ -28,6 +28,7 @@
         <module>service-zuul</module>
         <module>service-resttemplate</module>
         <module>security-oauth2</module>
+        <module>security-test</module>
     </modules>
 
     <properties>
