@@ -4,9 +4,12 @@ import lyr.securityoauth2.entity.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
@@ -27,52 +30,48 @@ import javax.annotation.Resource;
  **/
 @Configuration
 @EnableWebSecurity
+@Order(1)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Resource
+    private AuthenctiationFailureHandler authenctiationFailureHandler;
+
+    @Resource
+    private AuthenctiationSuccessHandler authenctiationSuccessHandler;
 
     @Resource
     private UserDetailServiceImpl userDetailService;
 
     @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        AuthenticationManager manager = super.authenticationManagerBean();
-        return manager;
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
-    /**
-     * configure(AuthenticationManagerBuilder auth)方法是用于配置权限验证登陆管理
-     *
-     * */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        super.configure(auth);
-
-        /**
-         * 自定义配置验证的service类 : 目的是查询数据库读取所有的用户权限
-         * 采用密文验证  :passwordEncoder
-         * 加密方式为      :getBCryptPasswordEncoder()
-         */
-        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailService)
+                .passwordEncoder(passwordEncoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                //任何请求需要认证
-                .anyRequest().authenticated()
-                //添加不需要认证的路径
-                .antMatchers("/oauth/*").permitAll();
-
+                .formLogin()                                // 定义当需要用户登录时候，转到的登录页面。
+                .loginPage("/authentication/require")       // 设置登录页面
+                .loginProcessingUrl("/login.do")          // 自定义的登录接口
+//                .successHandler(authenctiationSuccessHandler)     //登陆成功处理
+//                .failureHandler(authenctiationFailureHandler)     //登陆失败处理
+                .defaultSuccessUrl("/index.html")       // 登录成功之后，默认跳转的页面
+                .permitAll()
+                .and().authorizeRequests()                  // 定义哪些URL需要被保护、哪些不需要被保护
+                .antMatchers("/login.html").permitAll()       // 设置所有人都可以访问登录页面
+                .anyRequest().authenticated()               // 任何请求,登录后可以访问
+                .and().csrf().disable();                    // 关闭csrf防护
     }
 
-
-    /**
-     * 将加密方式的配置对象送入容器
-     */
-    @Bean
-    PasswordEncoder passwordEncoder(){
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/webjars/**/*", "/**/*.css", "/**/*.js");
     }
 
 }
