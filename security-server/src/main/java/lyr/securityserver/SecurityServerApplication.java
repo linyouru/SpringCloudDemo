@@ -1,7 +1,8 @@
-package lyr.securityoauth2;
+package lyr.securityserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
@@ -13,12 +14,13 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  **/
 @SpringBootApplication
 @EnableEurekaClient
-public class SecurityOauth2Application {
+@EnableCaching  //开启缓存功能
+public class SecurityServerApplication {
 
     public static void main(String[] args) {
-        System.out.println("Security-Oauth2启动...");
-        SpringApplication.run( SecurityOauth2Application.class, args );
-        System.out.println("Security-Oauth2启动成功");
+        System.out.println("Security-Server启动...");
+        SpringApplication.run( SecurityServerApplication.class, args );
+        System.out.println("Security-Server启动成功");
     }
 
 }

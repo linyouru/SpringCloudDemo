@@ -1,23 +1,15 @@
-package lyr.securityoauth2.config;
+package lyr.securityserver.config;
 
-import lyr.securityoauth2.entity.UserDetailServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import lyr.securityserver.entity.UserDetailServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import javax.annotation.Resource;
 
@@ -30,7 +22,6 @@ import javax.annotation.Resource;
  **/
 @Configuration
 @EnableWebSecurity
-@Order(1)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Resource
@@ -59,9 +50,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin()                                // 定义当需要用户登录时候，转到的登录页面。
                 .loginPage("/authentication/require")       // 设置登录页面
                 .loginProcessingUrl("/login.do")          // 自定义的登录接口
-//                .successHandler(authenctiationSuccessHandler)     //登陆成功处理
-//                .failureHandler(authenctiationFailureHandler)     //登陆失败处理
-                .defaultSuccessUrl("/index.html")       // 登录成功之后，默认跳转的页面
+                .successHandler(authenctiationSuccessHandler)     //登陆成功处理
+                .failureHandler(authenctiationFailureHandler)     //登陆失败处理
+//                .defaultSuccessUrl("/index.html")       // 登录成功之后，默认跳转的页面
                 .permitAll()
                 .and().authorizeRequests()                  // 定义哪些URL需要被保护、哪些不需要被保护
                 .antMatchers("/login.html").permitAll()       // 设置所有人都可以访问登录页面

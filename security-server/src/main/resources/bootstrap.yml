@@ -2,7 +2,7 @@
 
 spring:
   application:
-      name: security-oauth2
+      name: security-server
 #  cloud:
 #    config:
 #      fail-fast: true #快速失败
@@ -18,8 +18,13 @@ spring:
 #        username: guest
 #        password: guest
   redis:
-      host: 127.0.0.1
+      # Redis服务器地址
+      host: localhost
+      # Redis数据库索引（默认为0）
       database: 1
+      # Redis服务器连接端口
+      port: 6379
+
   #thymelea模板配置
   thymeleaf:
     prefix: classpath:/templates/

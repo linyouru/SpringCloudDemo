@@ -1,4 +1,4 @@
-package lyr.securityoauth2.entity;
+package lyr.securityserver.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
