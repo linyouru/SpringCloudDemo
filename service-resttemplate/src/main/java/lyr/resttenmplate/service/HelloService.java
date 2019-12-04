@@ -18,12 +18,14 @@ public class HelloService {
     @Autowired
     RestTemplate restTemplate;
 
-    @HystrixCommand(fallbackMethod = "getGoodbyeError")
+    @HystrixCommand(fallbackMethod = "serverError")
     public String hiService(String name) {
-        return restTemplate.getForObject("http://service-feign/saygoodbye?name="+name,String.class);
+//        return restTemplate.getForObject("http://service-feign/saygoodbye?name="+name,String.class);
+        //调用自身
+        return restTemplate.getForObject("http://service-resttemplate/sayhi?name="+name,String.class);
     }
 
-    public String getGoodbyeError(String name) {
+    public String serverError(String name) {
         return name+",调用service-feign的saygoodbye接口失败了";
     }
 

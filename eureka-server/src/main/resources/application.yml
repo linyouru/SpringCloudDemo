@@ -8,8 +8,8 @@ spring:
 
 eureka:
   instance:
-#    hostname: localhost
-    hostname: 192.168.130.151
+    hostname: localhost
+#    hostname: 192.168.130.151
   client:
     registerWithEureka: false #表明自己是一个eureka server
     fetchRegistry: false      #表明自己是一个eureka server

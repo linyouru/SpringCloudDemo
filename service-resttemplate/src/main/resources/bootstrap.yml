@@ -1,7 +1,7 @@
 
 spring:
   application:
-      name: service-resttemplate
+      name: service-resttemplate #服务名
   cloud:
     config:
       fail-fast: true
@@ -10,9 +10,14 @@ spring:
         serviceId: config-server  # 配置中心的名字，直接配置名称可以在配置中心集群的时候实现负载均衡
   profiles:
     active: dev # 对应配置中心文件的${profile}部分
+#  rabbitmq:
+#      host: localhost
+#      port: 5672
+#      username: guest
+#      password: guest
 
 #server:
-#  port: 8762
+#  port: 8763
 #
 #eureka:
 #  client:

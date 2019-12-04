@@ -26,8 +26,8 @@ public class HelloControler {
     @Value("${server.port}")
     private String port;
 
-    @GetMapping(value = "/getboodbye")
-    public String goodbye(@RequestParam String name) {
+    @GetMapping(value = "/getMsg")
+    public String getMsg(@RequestParam String name) {
         return helloService.hiService( name );
     }
 

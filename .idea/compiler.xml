@@ -9,6 +9,7 @@
         <module name="config-server" />
         <module name="eureka-server" />
         <module name="security-oauth2" />
+        <module name="security-server" />
         <module name="security-test" />
         <module name="service-feign" />
         <module name="service-gateway" />
@@ -22,6 +23,7 @@
       <module name="eureka-client" target="1.8" />
       <module name="eureka-server" target="1.8" />
       <module name="security-oauth2" target="1.8" />
+      <module name="security-server" target="1.8" />
       <module name="security-test" target="1.8" />
       <module name="service-feign" target="1.8" />
       <module name="service-gateway" target="1.8" />

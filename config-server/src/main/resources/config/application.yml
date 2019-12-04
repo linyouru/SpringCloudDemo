@@ -13,11 +13,11 @@ spring:
           search-locations: file:/E:/IdeaProjects/Config/SpringCloudDemoConfig #配置文件所在路径
   profiles:
     active: native    #使用本地的配置文件
-  rabbitmq:           #配置rabbitMQ
-      host: localhost
-      port: 5672
-      username: guest
-      password: guest
+#  rabbitmq:           #配置rabbitMQ
+#      host: localhost
+#      port: 5672
+#      username: guest
+#      password: guest
 
 eureka:
   client:

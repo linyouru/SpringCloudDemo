@@ -16,8 +16,8 @@ zuul:
       path: /hiapi/**
       serviceId: eureka-client
     api-a:
-      path: /api-a/**
-      serviceId: service-ribbon
+      path: /rest/**
+      serviceId: service-resttemplate
     api-b:
       path: /api-b/**
       serviceId: service-feign
